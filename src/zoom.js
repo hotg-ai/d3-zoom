@@ -88,7 +88,8 @@ export default function() {
     if (collection !== selection) {
       schedule(collection, transform, point, event);
     } else {
-      selection.interrupt().each(function() {
+      selection.each(function() {
+        interrupt(this); //https://github.com/d3/d3-zoom/commit/0a942f763afc7813d4b1186a1928fcd8f276cf84 
         gesture(this, arguments)
           .event(event)
           .start()
